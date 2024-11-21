@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -37,7 +37,8 @@ const App = () => {
         <Route path="/places/:placeId">
           <UpdatePlace />
         </Route>
-        <Redirect to="/" />
+        {/* if any of routes above does not exist => route to / */}
+        <Redirect to="/" /> 
       </Switch>
     );
   } else {
@@ -62,7 +63,7 @@ const App = () => {
     <AuthContext.Provider
       value={{
         // isLoggedIn: isLoggedIn,
-        isLoggedIn: !!token,
+        isLoggedIn: !!token, // check if token exists
         token: token,
         userId: userId,
         login: login,

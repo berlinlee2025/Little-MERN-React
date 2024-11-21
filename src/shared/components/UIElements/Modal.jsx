@@ -5,7 +5,9 @@ import { CSSTransition } from 'react-transition-group';
 import Backdrop from './Backdrop';
 import './Modal.scss';
 
-const ModalOverlay = props => {
+// Parent component
+// frontend/src/shared/components/UIElements/ErrorModal.jsx
+const ModalOverlay = (props) => {
   const content = (
     <div className={`modal ${props.className}`} style={props.style}>
       <header className={`modal__header ${props.headerClass}`}>

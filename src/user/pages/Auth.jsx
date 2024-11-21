@@ -15,7 +15,6 @@ import { useForm } from '../../shared/hooks/form-hook';
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 import './Auth.scss';
-import { isValid } from 'ipaddr.js';
 
 const Auth = () => {
   const auth = useContext(AuthContext);

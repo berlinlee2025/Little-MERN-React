@@ -47,9 +47,11 @@ const NewPlace = () => {
   /* React Router DOM feature useHistory() */
   const history = useHistory();
 
-  const devPlaceUrl = `http://localhost:3011/api/places`;
-    const prodPlaceUrl = `https://little-mern-nodejs-mongodb.onrender.com/api/places`;
-    const fetchUrl = process.env.NODE_ENV === 'production' ? prodPlaceUrl : devPlaceUrl;
+  const devPlaceUrl = `${process.env.REACT_APP_BACKEND_URL}/api/places`;
+  const prodPlaceUrl = `${process.env.REACT_APP_BACKEND_URL_PROD}/api/places`;
+  // const devPlaceUrl = `http://localhost:3011/api/places`;
+  // const prodPlaceUrl = `https://little-mern-nodejs-mongodb.onrender.com/api/places`;
+  const fetchUrl = process.env.NODE_ENV === 'production' ? prodPlaceUrl : devPlaceUrl;
 
   const placeSubmitHandler = async (event) => {
     event.preventDefault();  

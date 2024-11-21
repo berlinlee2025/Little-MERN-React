@@ -5,7 +5,7 @@ import Avatar from '../../shared/components/UIElements/Avatar';
 import Card from '../../shared/components/UIElements/Card';
 import './UserItem.scss';
 
-const UserItem = props => {
+const UserItem = (props) => {
   const isProduction = process.env.NODE_ENV === 'production';
   const imageUrl = isProduction ? `https://little-mern-nodejs-mongodb.onrender.com/` : `http://localhost:3011/`;
 

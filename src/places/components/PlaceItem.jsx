@@ -31,8 +31,10 @@ const PlaceItem = (props) => {
   const confirmDeleteHandler = async () => {
     setShowConfirmModal(false);
 
-    const devPlaceItemUrl = `http://localhost:3011/api/places/${props.id}`;
-    const prodPlaceItemUrl = `https://little-mern-nodejs-mongodb.onrender.com/${props.id}`;
+    const devPlaceItemUrl = `${process.env.REACT_APP_BACKEND_URL}/api/places/${props.id}`;
+    const prodPlaceItemUrl = `${process.env.REACT_APP_BACKEND_URL_PROD}/api/places/${props.id}`;
+    // const devPlaceItemUrl = `http://localhost:3011/api/places/${props.id}`;
+    // const prodPlaceItemUrl = `https://little-mern-nodejs-mongodb.onrender.com/${props.id}`;
     const fetchPlaceItemUrl = process.env.NODE_ENV === 'production' ? prodPlaceItemUrl : devPlaceItemUrl;
 
     console.log(`\nAttaching auth.token from <AuthContext />:\n`, auth.token, `\n`);
@@ -53,7 +55,8 @@ const PlaceItem = (props) => {
   };
 
   const isProduction = process.env.NODE_ENV === 'production';
-  const imageHost = isProduction ? `https://little-mern-nodejs-mongodb.onrender.com/` : `http://localhost:3011/`
+  // const imageHost = isProduction ? `https://little-mern-nodejs-mongodb.onrender.com/` : `http://localhost:3011/`
+  const imageHost = isProduction ? process.env.REACT_APP_BACKEND_URL_PROD : process.env.REACT_APP_BACKEND_URL;
 
   return (
     <React.Fragment>
@@ -97,8 +100,6 @@ const PlaceItem = (props) => {
         <Card className="place-item__content">
           {isLoading && <LoadingSpinner asOverlay />}
           <div className="place-item__image">
-
-            {/* <img src={`${imageHost}${props.image}`} alt={props.title} /> */}
             <img src={`${imageHost}${props.image}`} alt={props.title} />
           </div>
           <div className="place-item__info">

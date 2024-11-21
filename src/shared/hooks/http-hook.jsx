@@ -46,8 +46,7 @@ export const useHttpClient = () => {
         throw err;
       }
     },
-    [] // Avoid re-rendering of a callback by using useCallback & [] listener
-  );
+    []); // Avoid re-rendering of a callback by using useCallback & [] listener;
 
   const clearError = () => {
     setError(null);
@@ -56,8 +55,8 @@ export const useHttpClient = () => {
   // To clean up logic when component 'activeHttpRequests' that uses this useEffect() unmounts
   // Only run once when the component mounts
   useEffect(() => {
-    return () => { // this 'return' serves as a Clean up function before next time useEffect() runs again
-
+    return () => { 
+      
       // eslint-disable-next-line react-hooks/exhaustive-deps
       // activeHttpRequests.current also is [] of AbortControllers
       activeHttpRequests.current.forEach(abortCtrl => abortCtrl.abort());
